@@ -43,11 +43,11 @@ func main() {
 		case *slack.ConnectedEvent:
 			fmt.Println("Infos:", ev.Info)
 			fmt.Println("Connection counter:", ev.ConnectionCount)
-			rtm.SendMessage(rtm.NewOutgoingMessage("Hello #Music, I add YouTube links to my Spotify Playlist: https://open.spotify.com/user/kickassmusac/playlist/66RYEqJXsHCffYPrbaV88e", slackChannelId))
+			//rtm.SendMessage(rtm.NewOutgoingMessage("Hello #Music, I add YouTube links to my Spotify Playlist: https://open.spotify.com/user/kickassmusac/playlist/66RYEqJXsHCffYPrbaV88e", slackChannelId))
 
 		case *slack.MessageEvent:
 
-			if ev.SubMessage == nil || !strings.Contains(ev.SubMessage.Text, "youtube") || !strings.Contains(ev.SubMessage.Attachments[0].Title, "-") {
+			if ev.SubMessage == nil || !strings.Contains(ev.SubMessage.Text, "youtube") || !strings.Contains(ev.SubMessage.Attachments[0].Title, "-") || ev.SubType == "message_replied" {
 				continue
 			}
 			songInfo := strings.Split(ev.SubMessage.Attachments[0].Title, "-")
