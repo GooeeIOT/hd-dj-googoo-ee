@@ -47,7 +47,7 @@ func main() {
 
 		case *slack.MessageEvent:
 
-			if ev.SubMessage == nil || !strings.Contains(ev.SubMessage.Text, "youtube") || !strings.Contains(ev.SubMessage.Attachments[0].Title, "-") || ev.SubType == "message_replied" {
+			if ev.SubMessage == nil || !strings.Contains(ev.SubMessage.Text, "youtu") || !strings.Contains(ev.SubMessage.Attachments[0].Title, "-") || ev.SubType == "message_replied" {
 				continue
 			}
 			songInfo := strings.Split(ev.SubMessage.Attachments[0].Title, "-")
